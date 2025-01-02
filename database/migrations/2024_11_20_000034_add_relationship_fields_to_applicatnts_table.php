@@ -1,0 +1,20 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddRelationshipFieldsToApplicatntsTable extends Migration
+{
+    public function up()
+    {
+        Schema::table('applicatnts', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id', 'user_fk_10274683')->references('id')->on('users');
+            $table->unsignedBigInteger('salary_id')->nullable();
+            $table->foreign('salary_id', 'salary_fk_10274689')->references('id')->on('salaries');
+            $table->unsignedBigInteger('nationality_id')->nullable();
+            $table->foreign('nationality_id', 'nationality_fk_10274690')->references('id')->on('nationalities');
+        });
+    }
+}
